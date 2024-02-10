@@ -44,6 +44,19 @@ def escreverArquivo(cliente):
     with open("clientes.txt", "a") as arquivo:
         arquivo.write(f'{cliente.nome}, {cliente.endereco}, {cliente.codCliente}\n')
 
+def verificarID(lista):
+    """
+    Função verificarID: Recebe uma lista e verifica o ID fornecido está disponível.
+    Caso o ID já esteja em uso, a função pedirá ao usuário para fornecer um novo ID até que um ID válido seja inserido.
+    """
+    while True:
+        id = int(input("ID: "))
+
+        if any(cliente.codCliente == id for cliente in lista):
+            print('ID já existe. Tente novamente.')
+        else:
+            return id
+
 
 def preenche(lista):
     """
@@ -53,7 +66,7 @@ def preenche(lista):
     print("Informe os dados do Cliente:")
     nome = input("Nome: ")
     endereco = input("Endereço: ")
-    codCliente = int(input("ID: "))
+    codCliente = verificarID(lista)
     cliente = Cliente(nome, endereco, codCliente)
     lista.append(cliente)
     escreverArquivo(cliente)
