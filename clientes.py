@@ -75,6 +75,9 @@ def preenche(lista):
 
 
 def busca_interpolacao_nomes(lista_nomes, chave):
+    """
+    Função busca_interpolacao_nomes: Realiza a busca por um nome na lista de clientes utilizando o método de busca por interpolação.
+    """
     lista_clientes = lista_nomes
     lista_nomes = [cliente.nome for cliente in lista_clientes]
     lista_nomes.sort()
@@ -100,6 +103,9 @@ def busca_interpolacao_nomes(lista_nomes, chave):
 
 
 def busca_interpolacao_codigos(lista_codigos, chave):
+    """
+    Função busca_interpolacao_codigos: Realiza a busca por um código na lista de clientes utilizando o método de busca por interpolação.
+    """
     lista_clientes = lista_codigos
     lista_codigos = [cliente.codCliente for cliente in lista_clientes]
     lista_codigos.sort()
@@ -121,3 +127,4 @@ def busca_interpolacao_codigos(lista_codigos, chave):
             fim = posicao - 1
 
     return -1
+
