@@ -68,6 +68,9 @@ def busca_interpolacao_nomes(lista_nomes, chave):
     inicio = 0
     fim = len(lista_nomes) - 1
 
+    if(inicio == fim):
+        return 0
+    
     while inicio <= fim:
         # Calcula a posição utilizando uma média ponderada das posições dos caracteres
         posicao = inicio + int(((ord(chave[0]) - ord(lista_nomes[inicio][0])) / (
@@ -90,6 +93,9 @@ def busca_interpolacao_codigos(lista_codigos, chave):
     inicio = 0
     fim = len(lista_codigos) - 1
 
+    if (inicio == fim):
+        return 0
+    
     while inicio <= fim and lista_codigos[inicio] <= chave <= lista_codigos[fim]:
         # Calcula a posição utilizando uma média ponderada das posições dos códigos
         posicao = inicio + int(((chave - lista_codigos[inicio]) / (
