@@ -22,8 +22,9 @@ while (True):
         cod_busca = int(input('Digite o código a ser buscado: '))
         resultado = busca_interpolacao_codigos(lista, cod_busca)
         if resultado != -1:
-            print(
-                f'O código {cod_busca} foi encontrado na posição {resultado}.')
+            print(f'O código {cod_busca} foi encontrado na posição {resultado}.')
+            print('=-' * 14)
+            print(f'Nome: {lista[resultado].nome}\nEndereço: {lista[resultado].endereco}\nCódigo: {lista[resultado].codCliente}')
         else:
             print(f'O código {cod_busca} não foi encontrado na lista.')
     elif opc == 4:
