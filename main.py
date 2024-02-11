@@ -1,4 +1,4 @@
-from clientes import Cliente, preenche, busca_interpolacao_nomes, menu, escreverArquivo, busca_interpolacao_codigos, lerArquivo
+from clientes import Cliente, preenche, busca_interpolacao_nomes, menu, escreverArquivo, busca_interpolacao_codigos, lerArquivo, verClientes
 
 lista = lerArquivo()
 
@@ -27,4 +27,7 @@ while (True):
         else:
             print(f'O código {cod_busca} não foi encontrado na lista.')
     elif opc == 4:
+        verClientes(lista)
+        
+    elif opc == 5:
         break

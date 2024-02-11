@@ -21,7 +21,7 @@ def menu():
     não recebe parâmetros e não retorna nada.
     """
     print('=-' * 14)
-    print('[1] ADICIONAR CLIENTE\n[2] BUSCAR POR NOME\n[3] BUSCAR POR CÓDIGO\n[4] SAIR')
+    print('[1] ADICIONAR CLIENTE\n[2] BUSCAR POR NOME\n[3] BUSCAR POR CÓDIGO\n[4] VER TODOS OS CLIENTES\n[5] SAIR')
 
 
 def lerArquivo():
@@ -64,14 +64,24 @@ def preenche(lista):
     receberá a lista de clientes e retornará a lista atualizada.
     """
     print("Informe os dados do Cliente:")
-    nome = input("Nome: ")
-    endereco = input("Endereço: ")
+    nome = str(input("Nome: "))
+    endereco = str(input("Endereço: "))
     codCliente = verificarID(lista)
     cliente = Cliente(nome, endereco, codCliente)
     lista.append(cliente)
     escreverArquivo(cliente)
     
     return cliente
+
+
+def verClientes(lista):
+    """
+    Mostra na tela a quantidade e as infomações de todos os clientes cadastrados. 
+    """
+    for cliente in lista:
+        print(f'{cliente}')
+        print('-=' * 15)
+    print(f'Total de clientes: {len(lista)}')
 
 
 def busca_interpolacao_nomes(lista_nomes, chave):
