@@ -12,7 +12,7 @@ class Cliente:
         """
         Método str: Retorna uma string com os dados do cliente.
         """
-        return f"Nome: {self.nome}\nIdade: {self.endereco}\nID: {self.codCliente}"
+        return f"Nome: {self.nome}\nEndereço: {self.endereco}\nID: {self.codCliente}"
 
 
 def menu():
@@ -98,10 +98,12 @@ def busca_interpolacao_nomes(lista_nomes, chave):
         return 0
     
     while inicio <= fim:
-        # Calcula a posição utilizando uma média ponderada das posições dos caracteres
-        posicao = inicio + int(((ord(chave[0]) - ord(lista_nomes[inicio][0])) / (
+        try:
+            # Calcula a posição utilizando uma média ponderada das posições dos caracteres
+            posicao = inicio + int(((ord(chave[0]) - ord(lista_nomes[inicio][0])) / (
             ord(lista_nomes[fim][0]) - ord(lista_nomes[inicio][0]))) * (fim - inicio))
-
+        except ZeroDivisionError:
+            return -1
         if lista_nomes[posicao] == chave:
             return posicao  # Chave encontrada
         elif lista_nomes[posicao] < chave:
@@ -126,9 +128,12 @@ def busca_interpolacao_codigos(lista_codigos, chave):
         return 0
     
     while inicio <= fim and lista_codigos[inicio] <= chave <= lista_codigos[fim]:
+        try:
         # Calcula a posição utilizando uma média ponderada das posições dos códigos
-        posicao = inicio + int(((chave - lista_codigos[inicio]) / (
+            posicao = inicio + int(((chave - lista_codigos[inicio]) / (
             lista_codigos[fim] - lista_codigos[inicio])) * (fim - inicio))
+        except ZeroDivisionError:
+            return -1
         if lista_codigos[posicao] == chave:
             return posicao  # Chave encontrada
         elif lista_codigos[posicao] < chave:
