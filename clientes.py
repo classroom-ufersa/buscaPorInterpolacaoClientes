@@ -21,8 +21,8 @@ def menu():
     não recebe parâmetros e não retorna nada.
     """
     print('====== <<< \033[36m MENU\033[m  >>> ======')
-    print('|  [\033[36m1\033[m] ADICIONAR CLIENTE  |\n|  [\033[36m2\033[m] BUSCAR POR NOME    |\n|  [\033[36m3\033[m] BUSCAR POR CÓDIGO  |\n|  [\033[36m4\033[m] VER OS CLIENTES    |\n|  [\033[36m5\033[m] SAIR\t\t  |')
-    print('-' *27)
+    print('|  [\033[36m1\033[m] ADICIONAR CLIENTE   |\n|  [\033[36m2\033[m] BUSCAR POR NOME     |\n|  [\033[36m3\033[m] BUSCAR POR CÓDIGO   |\n|  [\033[36m4\033[m] VER OS CLIENTES     |\n|  [\033[36m5\033[m] SAIR\t\t   |')
+    print('-' * 28)
 
 
 def lerArquivo():
@@ -45,18 +45,56 @@ def escreverArquivo(cliente):
     with open("clientes.txt", "a") as arquivo:
         arquivo.write(f'{cliente.nome}, {cliente.endereco}, {cliente.codCliente}\n')
 
+
 def verificarID(lista):
     """
     Função verificarID: Recebe uma lista e verifica o ID fornecido está disponível.
     Caso o ID já esteja em uso, a função pedirá ao usuário para fornecer um novo ID até que um ID válido seja inserido.
     """
     while True:
-        id = int(input("ID: "))
+        id = int_input('ID: ')
 
         if any(cliente.codCliente == id for cliente in lista):
-            print('ID já existe. Tente novamente.')
+            print('\033[31mID já existe. Tente novamente.\033[m')
         else:
             return id
+
+
+def int_input(msg):
+    """
+    Função para ler apenas números.
+    """
+
+    while True:
+        try:
+            num = int(input(msg))
+        except (ValueError, TypeError, NameError, EOFError):
+            print('\033[31mERRO! Por favor, digite um número inteiro válido.\033[m')
+        except KeyboardInterrupt:
+            print('\033[31mUsuário preferiu digitar nada.\033[m')
+            return 0
+        else:
+            return num
+        
+
+def str_input(msg):
+    """
+    Função para ler apenas nomes.
+    """
+    while True:
+        try:
+            nome = input(msg)    # Converte o nome para minúsculas
+            if not nome.replace(" ", "").isalpha():
+                raise ValueError('O nome deve conter apenas letras.')
+        except ValueError as ve:
+            print('\033[31mERRO! Por favor, digite um nome válido.\033[m')
+        except EOFError:
+            print('\033[31mERRO! Por favor, digite um nome válido.\033[m')
+        except KeyboardInterrupt:
+                print('\033[31mUsuário preferiu digitar nada.\033[m')
+                return 'NULL'
+        else:
+            return nome.strip()
 
 
 def preenche(lista):
@@ -65,7 +103,7 @@ def preenche(lista):
     receberá a lista de clientes e retornará a lista atualizada.
     """
     print("Informe os dados do Cliente:")
-    nome = str(input("Nome: ")).lower() # Converte o nome para minúsculas
+    nome = str(str_input('Nome: ')) 
     endereco = str(input("Endereço: "))
     codCliente = verificarID(lista)
     cliente = Cliente(nome, endereco, codCliente)
