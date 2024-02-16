@@ -20,8 +20,9 @@ def menu():
     Função menu: Imprime o menu de opções do programa.
     não recebe parâmetros e não retorna nada.
     """
-    print('=-' * 14)
-    print('[1] ADICIONAR CLIENTE\n[2] BUSCAR POR NOME\n[3] BUSCAR POR CÓDIGO\n[4] VER TODOS OS CLIENTES\n[5] SAIR')
+    print('====== <<< \033[36m MENU\033[m  >>> ======')
+    print('|  [\033[36m1\033[m] ADICIONAR CLIENTE  |\n|  [\033[36m2\033[m] BUSCAR POR NOME    |\n|  [\033[36m3\033[m] BUSCAR POR CÓDIGO  |\n|  [\033[36m4\033[m] VER OS CLIENTES    |\n|  [\033[36m5\033[m] SAIR\t\t  |')
+    print('-' *27)
 
 
 def lerArquivo():
@@ -64,7 +65,7 @@ def preenche(lista):
     receberá a lista de clientes e retornará a lista atualizada.
     """
     print("Informe os dados do Cliente:")
-    nome = str(input("Nome: "))
+    nome = str(input("Nome: ")).lower() # Converte o nome para minúsculas
     endereco = str(input("Endereço: "))
     codCliente = verificarID(lista)
     cliente = Cliente(nome, endereco, codCliente)
