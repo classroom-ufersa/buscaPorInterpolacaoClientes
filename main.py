@@ -10,7 +10,7 @@ while (True):
         cliente = preenche(lista)
     elif opc == 2:  
         nome_busca = str_input('Digite o nome a ser buscado: ')
-        resultado = int(busca_interpolacao_nomes(lista, nome_busca))
+        resultado = int(busca_interpolacao_nomes(lista, nome_busca, True))
         if resultado != -1:
             print(f'O nome {nome_busca} foi encontrado na posição {resultado}.')
             print('=-' * 14)
@@ -20,7 +20,7 @@ while (True):
             print(f'O nome {nome_busca} não foi encontrado na lista.')
     elif opc == 3:
         cod_busca = int(int_input('Digite o código a ser buscado: '))
-        resultado = busca_interpolacao_codigos(lista, cod_busca)
+        resultado = busca_interpolacao_codigos(lista, cod_busca, True)
         if resultado != -1:
             print(f'O código {cod_busca} foi encontrado na posição {resultado}')
             print('=-' * 14)

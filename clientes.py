@@ -41,7 +41,8 @@ def lerArquivo():
 
 def escreverArquivo(cliente):
     """
-    Função escreverArquivo: Escreve os dados do cliente no arquivo clientes.txt."""
+    Função escreverArquivo: Escreve os dados do cliente no arquivo clientes.txt.
+    """
     with open("clientes.txt", "a") as arquivo:
         arquivo.write(f'{cliente.nome}, {cliente.endereco}, {cliente.codCliente}\n')
 
@@ -123,10 +124,15 @@ def verClientes(lista):
     print(f'Total de clientes: {len(lista)}')
 
 
-def busca_interpolacao_nomes(lista_nomes, chave):
+def busca_interpolacao_nomes(lista_nomes, chave, contagem=False):
     """
     Função busca_interpolacao_nomes: Realiza a busca por um nome na lista de clientes utilizando o método de busca por interpolação.
     """
+    import time
+
+    if contagem:
+        start_time = time.time()
+
     lista_clientes = lista_nomes
     lista_nomes = [cliente.nome for cliente in lista_clientes]
     lista_nomes.sort()
@@ -144,6 +150,9 @@ def busca_interpolacao_nomes(lista_nomes, chave):
         except ZeroDivisionError:
             return -1
         if lista_nomes[posicao] == chave:
+            if contagem:
+                end_time = time.time() - start_time
+                print(f'Tempo de execução: {end_time} segundos')
             return posicao  # Chave encontrada
         elif lista_nomes[posicao] < chave:
             inicio = posicao + 1
@@ -153,10 +162,15 @@ def busca_interpolacao_nomes(lista_nomes, chave):
     return -1  # Chave não encontrada
 
 
-def busca_interpolacao_codigos(lista_codigos, chave):
+def busca_interpolacao_codigos(lista_codigos, chave, contagem=False):
     """
     Função busca_interpolacao_codigos: Realiza a busca por um código na lista de clientes utilizando o método de busca por interpolação.
     """
+    import time
+
+    if contagem:
+        start_time = time.time()
+    
     lista_clientes = lista_codigos
     lista_codigos = [cliente.codCliente for cliente in lista_clientes]
     lista_codigos.sort()
@@ -174,6 +188,9 @@ def busca_interpolacao_codigos(lista_codigos, chave):
         except ZeroDivisionError:
             return -1
         if lista_codigos[posicao] == chave:
+            if contagem:
+                end_time = time.time() - start_time
+                print(f'Tempo de execução: {end_time} segundos')
             return posicao  # Chave encontrada
         elif lista_codigos[posicao] < chave:
             inicio = posicao + 1
