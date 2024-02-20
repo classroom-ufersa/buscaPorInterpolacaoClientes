@@ -132,7 +132,6 @@ def busca_interpolacao_nomes(lista_nomes, chave, contagem=False):
 
     if contagem:
         start_time = time.time()
-    cont = 0
     lista_clientes = lista_nomes
     lista_nomes = [cliente.nome for cliente in lista_clientes]
     lista_nomes.sort()
@@ -143,8 +142,6 @@ def busca_interpolacao_nomes(lista_nomes, chave, contagem=False):
         return 0
     
     while inicio <= fim and ord(lista_nomes[inicio][0]) <= ord(chave[0]) <= ord(lista_nomes[fim][0]):
-        cont += 1
-        print(f'{cont} ', end='')
         try:
             # Calcula a posição utilizando uma média ponderada das posições dos caracteres
             posicao = inicio + int(((ord(chave[0]) - ord(lista_nomes[inicio][0])) / (
@@ -154,7 +151,7 @@ def busca_interpolacao_nomes(lista_nomes, chave, contagem=False):
         if lista_nomes[posicao] == chave:
             if contagem:
                 end_time = time.time() - start_time
-                print(f'Tempo de execução: {end_time} segundos\nCom {cont} tentativas.')
+                print(f'Tempo de execução: {end_time} segundos.')
             return posicao  # Chave encontrada
         elif lista_nomes[posicao] < chave:
             inicio = posicao + 1
@@ -178,9 +175,6 @@ def busca_interpolacao_codigos(lista_codigos, chave, contagem=False):
     inicio = 0
     fim = len(lista_codigos) - 1
 
-    if (inicio == fim):
-        return 0
-    
     while inicio <= fim and lista_codigos[inicio] <= chave <= lista_codigos[fim]:
         try:
         # Calcula a posição utilizando uma média ponderada das posições dos códigos
