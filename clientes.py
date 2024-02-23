@@ -193,4 +193,3 @@ def busca_interpolacao_codigos(lista_codigos, chave, contagem=False):
             fim = posicao - 1
 
     return -1
-

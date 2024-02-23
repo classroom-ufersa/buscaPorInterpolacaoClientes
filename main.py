@@ -1,4 +1,4 @@
-from clientes import Cliente, preenche, busca_interpolacao_nomes, menu, escreverArquivo, busca_interpolacao_codigos, lerArquivo, verClientes, int_input, str_input
+from clientes import Cliente, preenche, busca_interpolacao_nomes, menu, busca_interpolacao_codigos, lerArquivo, verClientes, int_input, str_input
 
 lista = lerArquivo()
 
