@@ -27,14 +27,24 @@ def menu():
 
 def lerArquivo():
     try:
-        with open("clientes.txt", "r") as arquivo:
-            linhas = arquivo.readlines()
-            lista_clientes = []
-            for linha in linhas:
-                nome, endereco, codCliente = linha.strip().split(',')
-                cliente = Cliente(nome, endereco, int(codCliente))
-                lista_clientes.append(cliente)
-            return lista_clientes
+        try:
+            with open("clientes.txt", 'r', encoding='utf-8') as arquivo:
+                linhas = arquivo.readlines()
+                lista_clientes = []
+                for linha in linhas:
+                    nome, endereco, codCliente = linha.strip().split(',')
+                    cliente = Cliente(nome, endereco, int(codCliente))
+                    lista_clientes.append(cliente)
+                return lista_clientes
+        except UnicodeDecodeError:
+            with open("clientes.txt", 'r', encoding='iso-8859-1') as arquivo:
+                linhas = arquivo.readlines()
+                lista_clientes = []
+                for linha in linhas:
+                    nome, endereco, codCliente = linha.strip().split(',')
+                    cliente = Cliente(nome, endereco, int(codCliente))
+                    lista_clientes.append(cliente)
+                return lista_clientes
     except FileNotFoundError:
         return []
 
@@ -44,7 +54,8 @@ def escreverArquivo(cliente):
     Função escreverArquivo: Escreve os dados do cliente no arquivo clientes.txt.
     """
     with open("clientes.txt", "a") as arquivo:
-        arquivo.write(f'{cliente.nome}, {cliente.endereco}, {cliente.codCliente}\n')
+        arquivo.write(
+            f'{cliente.nome}, {cliente.endereco}, {cliente.codCliente}\n')
 
 
 def verificarID(lista):
@@ -70,13 +81,14 @@ def int_input(msg):
         try:
             num = int(input(msg))
         except (ValueError, TypeError, NameError, EOFError):
-            print('\033[31mERRO! Por favor, digite um número inteiro válido.\033[m')
+            print(
+                '\033[31mERRO! Por favor, digite um número inteiro válido.\033[m')
         except KeyboardInterrupt:
             print('\033[31mUsuário preferiu digitar nada.\033[m')
             return 0
         else:
             return num
-        
+
 
 def str_input(msg):
     """
@@ -92,8 +104,8 @@ def str_input(msg):
         except EOFError:
             print('\033[31mERRO! Por favor, digite um nome válido.\033[m')
         except KeyboardInterrupt:
-                print('\033[31mUsuário preferiu digitar nada.\033[m')
-                return 'NULL'
+            print('\033[31mUsuário preferiu digitar nada.\033[m')
+            return 'NULL'
         else:
             return nome.strip()
 
@@ -104,13 +116,13 @@ def preenche(lista):
     receberá a lista de clientes e retornará a lista atualizada.
     """
     print("Informe os dados do Cliente:")
-    nome = str(str_input('Nome: ')) 
+    nome = str(str_input('Nome: '))
     endereco = str(input("Endereço: "))
     codCliente = verificarID(lista)
     cliente = Cliente(nome, endereco, codCliente)
     lista.append(cliente)
     escreverArquivo(cliente)
-    
+
     return cliente
 
 
@@ -138,14 +150,14 @@ def busca_interpolacao_nomes(lista_nomes, chave, contagem=False):
     inicio = 0
     fim = len(lista_nomes) - 1
 
-    if(inicio == fim):
+    if (inicio == fim):
         return 0
-    
+
     while inicio <= fim and ord(lista_nomes[inicio][0]) <= ord(chave[0]) <= ord(lista_nomes[fim][0]):
         try:
             # Calcula a posição utilizando uma média ponderada das posições dos caracteres
             posicao = inicio + int(((ord(chave[0]) - ord(lista_nomes[inicio][0])) / (
-            ord(lista_nomes[fim][0]) - ord(lista_nomes[inicio][0]))) * (fim - inicio))
+                ord(lista_nomes[fim][0]) - ord(lista_nomes[inicio][0]))) * (fim - inicio))
         except ZeroDivisionError:
             return -1
         if lista_nomes[posicao] == chave:
@@ -168,7 +180,7 @@ def busca_interpolacao_codigos(lista_codigos, chave, contagem=False):
 
     if contagem:
         start_time = time.time()
-    
+
     lista_clientes = lista_codigos
     lista_codigos = [cliente.codCliente for cliente in lista_clientes]
     lista_codigos.sort()
@@ -177,9 +189,9 @@ def busca_interpolacao_codigos(lista_codigos, chave, contagem=False):
 
     while inicio <= fim and lista_codigos[inicio] <= chave <= lista_codigos[fim]:
         try:
-        # Calcula a posição utilizando uma média ponderada das posições dos códigos
+            # Calcula a posição utilizando uma média ponderada das posições dos códigos
             posicao = inicio + int(((chave - lista_codigos[inicio]) / (
-            lista_codigos[fim] - lista_codigos[inicio])) * (fim - inicio))
+                lista_codigos[fim] - lista_codigos[inicio])) * (fim - inicio))
         except ZeroDivisionError:
             return -1
         if lista_codigos[posicao] == chave:
