@@ -80,7 +80,7 @@ c1 * 1 + c2 * 1 + c3 * n + c4 * n + c5 * n + c6 * n + c7 * n + c8 * n + c9 * 1 =
 
 ### Caso Médio:
 
-No caso médio, a complexidade depende da distribuição dos dados. Se assumirmos que os dados estão uniformemente distribuídos, a complexidade média é aproximadamente <span style="font-weight: bold;">O(log(log n))</span> ou melhor. No entanto, calcular a complexidade exata do caso médio requeruma análise probabilística detalhada da distribuição dos dados, o que está além do escopo deste exemplo.
+No caso médio, a complexidade depende da distribuição dos dados. Se assumirmos que os dados estão uniformemente distribuídos, a complexidade média é aproximadamente <span style="font-weight: bold;">O(log(log n))</span> ou melhor. No entanto, calcular a complexidade exata do caso médio requer uma análise probabilística detalhada da distribuição dos dados.
 
 ### Melhor Caso:
 
