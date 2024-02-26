@@ -138,7 +138,7 @@ def verClientes(lista):
 
 
 def busca_interpolacao_nomes(lista_nomes, chave, contagem=False):
-    """
+    """ 
     Função busca_interpolacao_nomes: Realiza a busca por um nome na lista de clientes utilizando o método de busca por interpolação.
     """
     import time

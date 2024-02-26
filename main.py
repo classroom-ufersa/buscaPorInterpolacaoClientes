@@ -12,22 +12,22 @@ while (True):
         nome_busca = str_input('Digite o nome a ser buscado: ')
         resultado = int(busca_interpolacao_nomes(lista, nome_busca, True))
         if resultado != -1:
-            print(f'O nome {nome_busca} foi encontrado na lista.')
+            print(f'O nome do cliente {nome_busca} foi encontrado na lista.')
             print('=-' * 14)
             lista.sort(key=lambda x: x.nome) # Ordena a lista de clientes pelo nome
             print(lista[resultado])
         else:
-            print(f'O nome {nome_busca} não foi encontrado na lista.')
+            print(f'O nome do cliente {nome_busca} não foi encontrado na lista.')
     elif opc == 3:
         cod_busca = int(int_input('Digite o código a ser buscado: '))
         resultado = busca_interpolacao_codigos(lista, cod_busca, True)
         if resultado != -1:
-            print(f'O código {cod_busca} foi encontrado na lista.2')
+            print(f'O código do cliente {cod_busca} foi encontrado na lista.')
             print('=-' * 14)
             lista.sort(key=lambda x: x.codCliente) # Ordena a lista de clientes pelo código
             print(lista[resultado])
         else:
-            print(f'O código {cod_busca} não foi encontrado na lista.')
+            print(f'O código do cliente{cod_busca} não foi encontrado na lista.')
     elif opc == 4:
         verClientes(lista)
     elif opc == 5:
