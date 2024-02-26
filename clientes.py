@@ -130,6 +130,7 @@ def verClientes(lista):
     """
     Mostra na tela a quantidade e as infomações de todos os clientes cadastrados. 
     """
+    lista.sort(key=lambda x: x.nome)
     for cliente in lista:
         print(f'{cliente}')
         print('-=' * 15)
@@ -144,6 +145,7 @@ def busca_interpolacao_nomes(lista_nomes, chave, contagem=False):
 
     if contagem:
         start_time = time.time()
+        
     lista_clientes = lista_nomes
     lista_nomes = [cliente.nome for cliente in lista_clientes]
     lista_nomes.sort()
@@ -169,6 +171,9 @@ def busca_interpolacao_nomes(lista_nomes, chave, contagem=False):
             inicio = posicao + 1
         else:
             fim = posicao - 1
+    if contagem:
+        end_time = time.time() - start_time
+        print(f'Tempo de execução: {end_time} segundos.')
     return -1  # Chave não encontrada
 
 
@@ -203,5 +208,7 @@ def busca_interpolacao_codigos(lista_codigos, chave, contagem=False):
             inicio = posicao + 1
         else:
             fim = posicao - 1
-
+    if contagem:
+        end_time = time.time() - start_time
+        print(f'Tempo de execução: {end_time} segundos.')
     return -1
