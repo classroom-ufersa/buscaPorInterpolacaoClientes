@@ -20,9 +20,13 @@ def menu():
     Função menu: Imprime o menu de opções do programa.
     não recebe parâmetros e não retorna nada.
     """
-    print('====== <<< \033[36m MENU\033[m  >>> ======')
-    print('|  [\033[36m1\033[m] ADICIONAR CLIENTE   |\n|  [\033[36m2\033[m] BUSCAR POR NOME     |\n|  [\033[36m3\033[m] BUSCAR POR CÓDIGO   |\n|  [\033[36m4\033[m] VER OS CLIENTES     |\n|  [\033[36m5\033[m] SAIR\t\t   |')
-    print('-' * 28)
+    print(f'====== <<< \033[36m{"MENU"}\033[m >>> ======')
+    print(f'| [\033[36m1\033[m] {"ADICIONAR CLIENTE":<18} |')
+    print(f'| [\033[36m2\033[m] {"BUSCAR POR NOME":<18} |')
+    print(f'| [\033[36m3\033[m] {"BUSCAR POR CÓDIGO":<18} |')
+    print(f'| [\033[36m4\033[m] {"VER OS CLIENTES":<18} |')
+    print(f'| [\033[36m5\033[m] {"SAIR":<18} |')
+    print('-' * 26)
 
 
 def lerArquivo():
@@ -53,7 +57,7 @@ def escreverArquivo(cliente):
     """
     Função escreverArquivo: Escreve os dados do cliente no arquivo clientes.txt.
     """
-    with open("clientes.txt", "a") as arquivo:
+    with open("clientes.txt", "a", encoding='utf-8') as arquivo:
         arquivo.write(
             f'{cliente.nome}, {cliente.endereco}, {cliente.codCliente}\n')
 
@@ -132,8 +136,8 @@ def verClientes(lista):
     """
     lista.sort(key=lambda x: x.nome)
     for cliente in lista:
-        print(f'{cliente}')
-        print('-=' * 15)
+        print(f'{cliente.nome:<30} | {cliente.endereco:<30} | {cliente.codCliente}')
+        print('-=' * 37)
     print(f'Total de clientes: {len(lista)}')
 
 
