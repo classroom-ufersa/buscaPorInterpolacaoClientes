@@ -41,7 +41,7 @@ def lerArquivo():
                 lista_clientes = []
                 for linha in linhas:
                     nome, endereco, codCliente = linha.strip().split(',')
-                    cliente = Cliente(nome, endereco, int(codCliente))
+                    cliente = Cliente(nome.title(), endereco.title(), int(codCliente))
                     lista_clientes.append(cliente)
                 return lista_clientes
         except UnicodeDecodeError:
@@ -50,7 +50,7 @@ def lerArquivo():
                 lista_clientes = []
                 for linha in linhas:
                     nome, endereco, codCliente = linha.strip().split(',')
-                    cliente = Cliente(nome, endereco, int(codCliente))
+                    cliente = Cliente(nome.title(), endereco.title(), int(codCliente))
                     lista_clientes.append(cliente)
                 return lista_clientes
     except FileNotFoundError:
@@ -205,7 +205,7 @@ def str_input(msg):
             print('\033[31mUsuário preferiu digitar nada.\033[m')
             return 'NULL'
         else:
-            return nome.strip()
+            return nome.title().strip()
 
 
 def verificarID(lista):
