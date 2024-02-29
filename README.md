@@ -92,11 +92,10 @@ c1 * 1 + c2 * 1 + c3 * 1 + c4 * 1 + c5 * 1 + c6 * 1 + c7 * 1 + c8 * 1 + c9 * 1 =
 
   <h2 id="config" style="font-weight: bold; font-size: 2rem">Configuração usada nos testes</h2>
   CPU: AMD Ryzen 5 5500U</br>
-  GPU: Radeon Vega 7</br>
-  VRAM: 2gb</br>
+  Frequência: 2.1GHz até 4GHz</br>
+  Clock base: 100MHz</br>
   RAM: 10gb DDR4</br>
-  SSD: 256gb NVMe M.2</br>
-
+  
   <h2 id="colab" style="font-weight: bold; font-size: 2rem">Colaboradores</h2>
   Um agradecimento especial a todas as pessoas que contribuíram para este projeto.
   <table>

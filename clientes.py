@@ -107,6 +107,9 @@ def busca_interpolacao_codigos(lista_codigos, chave, contagem=False):
     lista_codigos.sort()
     inicio = 0
     fim = len(lista_codigos) - 1
+    
+    if(fim == inicio):
+        return 0
 
     while inicio <= fim and lista_codigos[inicio] <= chave <= lista_codigos[fim]:
         try:
